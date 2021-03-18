@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="text" type="text" />
+    <h2 id="show"></h2>
+    <script>
+      // Object。defineProprety 对 对象的属性做修改 并返回修改之后的对选
+      // 数据改变 
+      const data = {
+        text: "",
+      };
+      let changeText = "";
+      Object.defineProperty(data, "text", {
+        get() {
+          console.log(1);
+          return changeText;
+        },
+        set(newValue) {
+          changeText = newValue;
+          console.log(2);
+          document.getElementById("show").innerText = newValue;
+        },
+      });
+      document.getElementById("text").addEventListener("input", function() {
+        data.text = this.value;
+        console.log(this.value);
+        // console.log(data);
+      });
+      // const obj = {
+      //   name: "小王",
+      // };
+      // console.log(obj);
+      // let b = '666'
+      // Object.defineProperty(obj, "age", {
+      //   // writable: true,
+      //   get() {
+      //     return 18;
+      //   },
+      //   // set(b) {
+      //   //   b = b;
+      //   // },
+      // });
+    </script>
+  </body>
+</html>
